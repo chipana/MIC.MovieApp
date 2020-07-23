@@ -1,0 +1,115 @@
+﻿<Page  Foreground="White" FontSize="18" 
+    x:Class="APPFilmes.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:APPFilmes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Style.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <SplitView Name="MySplitView" DisplayMode="CompactOverlay"  IsPaneOpen="False" CompactPaneLength="50" OpenPaneLength="150" PaneClosing="MySplitView_PaneClosed">
+        <SplitView.Pane>
+            <StackPanel Orientation="Vertical" Background="Gray">
+                <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Height="50" Background="Transparent" Click="HamburgerButton_Click" HorizontalAlignment="Stretch" Margin="0,0,100,0"/>
+                <RadioButton Click="AppBarButton_Click_Home" Tag="" Style="{StaticResource NavRadioButtonStyle}" Content="Home"/>
+                <RadioButton Style="{StaticResource NavRadioButtonStyle}" Tag="" Content="Search" Click="ToggBusca_Click"/>
+                <StackPanel Orientation="Vertical" Name="StackSearch" Visibility="Collapsed">
+                    <TextBox Name="BuscaS" PlaceholderText="Search" KeyDown="OK_keydownS"  Style="{StaticResource TextBoxStyle1}" />
+                    <HyperlinkButton Click="HyperlinkButton_Click" Content="Show Season/EP" HorizontalAlignment="Center" />
+                    <TextBox Name="SeasonS" PlaceholderText="Season"   KeyDown="OK_keydownS"  Style="{StaticResource TextBoxStyle1}" Visibility="Collapsed" />
+                    <TextBox Name="EpisodeS" PlaceholderText="Episode"   KeyDown="OK_keydownS"  Style="{StaticResource TextBoxStyle1}" Visibility="Collapsed" />
+                    <AppBarButton Name="BotaoBusca" Height="50" Width="50" VerticalAlignment="Center" Icon="Zoom" Click="BotaoBusca_Click" HorizontalAlignment="Center"/>
+                </StackPanel>
+                <RadioButton Name="Iconfav" Click="AppBarButton_Click" Tag="" Style="{StaticResource NavRadioButtonStyle}" Content="Favorite" VerticalAlignment="Center"/>
+                </StackPanel>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <Grid BorderBrush="White" BorderThickness="4">
+                <Image Source="Assets/dark_grey_pattern_by_ipodpunker-d78xk8c.png" Stretch="Fill" />
+                <Grid Name="Grid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="5*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="1"  Text="Media" FontSize="70" HorizontalAlignment="Center"  />
+                    <Grid Grid.Row="1" Name="Gridlist">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="6.5*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <ListView Grid.Row="0" Grid.ColumnSpan="2"  Background="Transparent" Foreground="Gray" BorderBrush="White" BorderThickness="3" Name="lista" ItemClick="lista_ItemClick" IsItemClickEnabled="True" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="{Binding Title}"  HorizontalAlignment="Left" FontSize="20" Foreground="White"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Year}" Foreground="Gray" HorizontalAlignment="Left" FontSize="10" />
+                                            <Image Name="IconFLista" Grid.Column="2" HorizontalAlignment="Left" Height="15" Width="15" Source="{Binding imgtype}" ToolTipService.ToolTip="{Binding TypeF}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <AppBarButton Name="Voltapag" Click="Voltapag_Click" Style="{StaticResource AppBarButtonStyle2}" />
+                        <AppBarButton Name="Avpag" Grid.Column="1" Click="Avpag_Click" Icon="Forward" Style="{StaticResource AppBarButtonStyle2}"/>
+                        <TextBlock Name="Pagina" FontSize="20" Foreground="Orange" Grid.Row="1" Grid.ColumnSpan="2" Height="35" Width="70" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,15,0,0"/>
+                    </Grid>
+                    <ScrollViewer Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"  BorderBrush="White" BorderThickness="3">
+                        <Grid Margin="0,0,15,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.4*"/>
+                                <RowDefinition Height="0.6*"/>
+                                <RowDefinition Height="0.6*"/>
+                                <RowDefinition Height="0.6*"/>
+                                <RowDefinition Height="0.6*" />
+                                <RowDefinition Height="0.6*"/>
+                                <RowDefinition Height="0.8*"/>
+                                <RowDefinition Height="1.3*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" HorizontalAlignment="Right" Foreground="White" Text="Details" FontSize="30" VerticalAlignment="Center"    Margin="10"/>
+                            <Image Name="IconFilme" Grid.Column="2" HorizontalAlignment="Left" Height="40" Width="40" Source="{Binding imgtype}" ToolTipService.ToolTip="{Binding TypeF}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0"  Text="Title"  HorizontalAlignment="Center" Style="{StaticResource TextBlockStyle1}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1"  Text="{Binding Title}" TextWrapping="Wrap" />
+                            <TextBlock Grid.Row="2" Grid.Column="0"  Text="Year"    HorizontalAlignment="Center"  Style="{StaticResource TextBlockStyle1}"/>
+                            <TextBlock Grid.Row="3" Grid.Column="0"  Text="Genre"  HorizontalAlignment="Center" Style="{StaticResource TextBlockStyle1}"/>
+                            <TextBlock Grid.Row="3" Grid.Column="1"  Text="{Binding Genre}" />
+                            <TextBlock Grid.Row="2" Grid.Column="1"  Text="{Binding Year}"  TextWrapping="Wrap"/>
+                            <TextBlock Grid.Row="4" Grid.Column="0"  Text="Runtime"   HorizontalAlignment="Center"  Style="{StaticResource TextBlockStyle1}"/>
+                            <TextBlock Grid.Row="4" Grid.Column="1"  Text="{Binding Runtime}" />
+                            <TextBlock Grid.Row="5" Grid.Column="0"  Text="Rating"    HorizontalAlignment="Center"  Style="{StaticResource TextBlockStyle1}"/>
+                            <StackPanel Name="rating" VerticalAlignment="Top" Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
+                            </StackPanel>
+                            <TextBlock Grid.Row="6" Grid.Column="0"  Text="Actors"    HorizontalAlignment="Center"  Style="{StaticResource TextBlockStyle1}"/>
+                            <TextBlock Grid.Row="6" Grid.Column="1"  Text="{Binding Actors}"  TextWrapping="Wrap" />
+                            <TextBlock Grid.Row="7" Grid.Column="0"  Text="Plot"     HorizontalAlignment="Center"  Style="{StaticResource TextBlockStyle1}"/>
+                            <TextBlock Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"    Text="{Binding Plot}" TextWrapping="Wrap"/>
+                            <Image Grid.Row="1" Grid.Column="2" Grid.RowSpan="5" Source="{Binding Poster}"  Height="350"/>
+                            <StackPanel Name="movieicon" VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="0" Grid.Column="2">
+                            </StackPanel>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+        </SplitView.Content>
+    </SplitView>
+</Page> 

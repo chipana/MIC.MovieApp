@@ -1,0 +1,25 @@
+﻿{
+  "Favorites": [
+    {
+      "Title": "Cars",
+      "Year": "2006",
+      "imdbID": "tt0317219",
+      "Type": "movie",
+      "Poster": "http://ia.media-imdb.com/images/M/MV5BMTg5NzY0MzA2MV5BMl5BanBnXkFtZTYwNDc3NTc2._V1_SX300.jpg"
+    },
+    {
+      "Title": "Iron Man 3",
+      "Year": "2013",
+      "imdbID": "tt1300854",
+      "Type": "movie",
+      "Poster": "http://ia.media-imdb.com/images/M/MV5BMTkzMjEzMjY1M15BMl5BanBnXkFtZTcwNTMxOTYyOQ@@._V1_SX300.jpg"
+    },
+    {
+      "Title": "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe",
+      "Year": "2005",
+      "imdbID": "tt0363771",
+      "Type": "movie",
+      "Poster": "http://ia.media-imdb.com/images/M/MV5BMTc0NTUwMTU5OV5BMl5BanBnXkFtZTcwNjAwNzQzMw@@._V1_SX300.jpg"
+    }
+  ]
+}
